@@ -1,17 +1,20 @@
 pipeline {
     agent any
+    // Defines the stages of the pipeline
     stages {
+        //Stage 1: Checks out the code from the main branch of the mentioned GitHub repository
         stage('Checkout to main') {
             steps {
                 git branch: 'main', url: 'https://github.com/ManasaR05/PrintIPAddresses.git'
             }
         }
+        // Stage 2: Creating a Python virtual environment
         stage('Creating virtual environment') {
             steps {
                 sh 'python3 -m venv venv'
             }
         }
-
+        // Stage 3: Installing the Python packages from requirements.txt
         stage('Installing requirements') {
             steps {
                 sh '''
@@ -20,7 +23,7 @@ pipeline {
                 '''
             }
         }
-
+        // Stage 4: Runs the Python script with two different input files
         stage('run codes in console with input files') {
             steps {
                 sh '''
@@ -30,7 +33,7 @@ pipeline {
                 '''
             }
         }
-
+        // Stage 5: Execution of the Robot Framework test suite
         stage('Running robot test') {
             steps {
                 sh '''

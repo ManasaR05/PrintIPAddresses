@@ -2,6 +2,11 @@ import json
 import sys
 
 def main(filename):
+    """
+        The method reads a JSON file and prints out the IP addresses.
+        If a network object is present, it also prints the corresponding network IP on the same line.
+        filename (str) argument: It is the name of the JSON file containing the data.
+    """
     try:
         # Opens the file and loads the JSON data
         with open(filename, 'r') as json_file:
